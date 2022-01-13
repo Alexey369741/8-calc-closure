@@ -1,0 +1,26 @@
+const calculator = createCalculator(100);
+
+calculator.add(10); // 110
+calculator.add(10); // 120
+calculator.sub(20); // 100
+console.log(calculator.get()) // 100
+
+calculator.set(20); // 20
+calculator.add(10); // 30
+calculator.add(10); // 40
+calculator.add('qwe'); // NaN и значение 40 не менять
+
+function createCalculator(base) {
+    return {
+        add: (num) => base += isNumber(num) ? num : 0,
+        sub: (num) => base -= isNumber(num) ? num : 0,
+        set: (num) => base = num,
+        get: () => base,
+    };
+  }
+  
+  function isNumber(num) {
+    return !isNaN(num);
+}
+
+console.log(calculator.get()) // 40
